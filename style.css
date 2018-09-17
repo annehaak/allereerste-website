@@ -11,13 +11,13 @@ body {
 
 
   p { 
-   font-family: 'CMUSerifRoman'; 
+   font-family: 'GFSDidotRegular'; 
    font-weight: normal; 
    font-style: normal; 
 }
 
 body, pre, pre code {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 a, a:visited {

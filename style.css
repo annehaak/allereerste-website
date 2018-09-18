@@ -1,5 +1,5 @@
 html {
-  background-color: #F7F2E0;
+  background-color: #F2F2F2;
 }
 
 body {
@@ -21,7 +21,13 @@ body, pre, pre code {
 
 
 a, a:visited {
-  color: #48820f;
+  color: ##585858;
+}
+
+h1 {
+  display: inline-block;
+  border-bottom-style: none;
+  border-bottom-color: none;
 }
 
 h2 {

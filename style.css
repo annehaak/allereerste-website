@@ -8,16 +8,17 @@ body {
   margin: 0 auto;
   padding: 1em;
 
-  
-  
-   font-family: 'ClearSansLightRegular'; 
-   font-weight: normal; 
-   font-style: normal; 
+
+
+  font-family: 'ClearSansLightRegular';
+  font-weight: normal;
+  font-style: normal;
 }
 
 body, pre, pre code {
   font-size: 18px;
 }
+
 
 a, a:visited {
   color: #48820f;

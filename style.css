@@ -9750,7 +9750,7 @@ table-primary, table-secondary, table-success, table-info, table-warning, table-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: absolute;
 }
 
 .hero-text {

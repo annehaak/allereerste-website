@@ -47,6 +47,63 @@
 </nav>
        </div>
     </div> 
+	  <script>
+      function imageZoom(imgID, resultID) {
+        var img, lens, result, cx, cy;
+        img = document.getElementById(imgID);
+        result = document.getElementById(resultID);
+        /*create lens:*/
+        lens = document.createElement("DIV");
+        lens.setAttribute("class", "img-zoom-lens");
+        /*insert lens:*/
+        img.parentElement.insertBefore(lens, img);
+        /*calculate the ratio between result DIV and lens:*/
+        cx = result.offsetWidth / lens.offsetWidth;
+        cy = result.offsetHeight / lens.offsetHeight;
+        /*set background properties for the result DIV:*/
+        result.style.backgroundImage = "url('" + img.src + "')";
+        result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+        /*execute a function when someone moves the cursor over the image, or the lens:*/
+        lens.addEventListener("mousemove", moveLens);
+        img.addEventListener("mousemove", moveLens);
+        /*and also for touch screens:*/
+        lens.addEventListener("touchmove", moveLens);
+        img.addEventListener("touchmove", moveLens);
+        function moveLens(e) {
+          var pos, x, y;
+          /*prevent any other actions that may occur when moving over the image:*/
+          e.preventDefault();
+          /*get the cursor's x and y positions:*/
+          pos = getCursorPos(e);
+          /*calculate the position of the lens:*/
+          x = pos.x - (lens.offsetWidth / 2);
+          y = pos.y - (lens.offsetHeight / 2);
+          /*prevent the lens from being positioned outside the image:*/
+          if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+          if (x < 0) {x = 0;}
+          if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+          if (y < 0) {y = 0;}
+          /*set the position of the lens:*/
+          lens.style.left = x + "px";
+          lens.style.top = y + "px";
+          /*display what the lens "sees":*/
+          result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+        }
+        function getCursorPos(e) {
+          var a, x = 0, y = 0;
+          e = e || window.event;
+          /*get the x and y positions of the image:*/
+          a = img.getBoundingClientRect();
+          /*calculate the cursor's x and y coordinates, relative to the image:*/
+          x = e.pageX - a.left;
+          y = e.pageY - a.top;
+          /*consider any page scrolling:*/
+          x = x - window.pageXOffset;
+          y = y - window.pageYOffset;
+          return {x : x, y : y};
+        }
+      }
+      </script>
     
        <body>
 <img src="https://raw.githubusercontent.com/annehaak/allereerste-website/master/%22If%20people%20knew%20how%20hard%20I%20worked%20to%20get%20my%20mastery%2C%20it%20wouldn't%20seem%20so%20wonderful%20at%20all.”.png"/ alt="citation"></head>
@@ -63,6 +120,14 @@
          “I am no painter” is something you would never expect to hear from an artist like Michelangelo Buonarroti. His frescos in the Sistine Chapel, most famous for The Last Judgment and the Creation of Man have become an icon of western culture and are considered to be Michelangelo’s most famous painted works. However, contrary to popular belief, Michelangelo was not just a visual artist. Not only was he celebrated for his painted and sculpted works; he was an admired architect, and a pretty amazing poet as well.</p>
 <p class="lead">Why would an incredibly gifted artist like Michelangelo also feel the need to write poetry? He might have been influenced by the intellectual milieu in which he found himself; going along with the social codes and expectations and profiling himself as a typical, Da Vinci-like ‘Renaissance man’, a homo universalis. It is nevertheless more likely that it was for the simple reason of self-expression. It has been noted many times that Michelangelo projected himself onto anything he created, thereby making himself into his own point of reference. Since he did not like to speak about his true thoughts and feelings, and almost never did (he was rather paranoid), his creative output is the only means by which we have the possibility to get closer to the master. Michelangelo's poetry, but also all his other art is filled with little bits and pieces of autobiographical information, and it is up to us to find and interpret them.</p>
 
+		     <div class="img-zoom-container">
+    <img id="myimage" src="https://raw.githubusercontent.com/annehaak/allereerste-website/master/10407082_10153286599168535_3615934254268379533_n.jpg" alt="sonnet5" style="width:330px;height:440px;">
+    <div id="myresult" class="img-zoom-result" style="float:right"> </div>
+</div>
+<script>
+imageZoom("myimage", "myresult");
+</script>
+		     
 <p class="lead">On a spring day in 1508, the 10th of May to be precise, 33-year old Michelangelo wrote that he would start working on the vault of Pope Sixtus’ chapel in Rome. Four years later, in October 1512, the work was finished and the Sistine Chapel was re-opened. People were absolutely amazed by the result. You had to be superhuman to create something like this.</p>
 
 <p class="lead">You indeed had to be something like a superhuman: imagine spending four years on high scaffolds with only a small, poorly lit and moldy space to work in. It was under these conditions that Michelangelo probably wrote a sonnet to his friend Giovanni da Pistoia.</p>

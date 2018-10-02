@@ -9778,3 +9778,23 @@ table-primary, table-secondary, table-success, table-info, table-warning, table-
   color: white;
 }
 
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 33px;
+  height: 44px;
+}
+
+.img-zoom-result {
+  position: relative;
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 330px;
+  height: 440px;
+}
